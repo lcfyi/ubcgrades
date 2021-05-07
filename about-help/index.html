@@ -1,0 +1,305 @@
+<!--
+
+=========================================================
+* Argon Dashboard - v1.1.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+
+    
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta property="og:title" content="UBCGrades - Historical Grade Data" />
+      <meta property="og:type" content="website" />
+      <meta name="description" content="A tool to look up UBC historical grade distributions. Visualize some data and make important choices.">    
+
+    <title>
+       About & Help  | UBCGrades
+    </title>
+
+    
+  
+      <!-- Favicon -->
+      <link rel="shortcut icon" type="image/x-icon" href="/static/assets/img/brand/favicon.ico">
+      <link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/brand/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/img/brand/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/img/brand/favicon-16x16.png">
+      <link rel="mask-icon" href="/static/assets/img/brand/safari-pinned-tab.svg" color="#5bbad5">
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+      <!-- Icons -->
+      <link href="/static/assets/js/plugins/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <!-- CSS Files -->
+      <link href="/static/assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" >
+      <link href="/static/assets/css/argon-dashboard.css" rel="stylesheet">
+      <link href="/static/assets/css/app.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    
+
+
+  
+</head>
+
+<body class="">
+
+
+  <!-- Sidenav -->
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+        <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand pb-0" href="/">
+        <h1 class="text-primary" style="font-size: 1.75rem">UBCGrades</h1>
+      </a>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="/">
+                <h1 class="text-primary" style="font-size: 1.75rem">UBCGrades</h1>
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation -->
+        
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="/">
+              <i class="far fa-chart-bar text-primary"></i>View Grades
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/statistics-by-course/">
+              <i class="fas fa-user-graduate text-blue"></i>Statistics by Course
+            </a>
+          </li>
+
+
+
+
+
+
+
+
+
+
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+        <h6 class="navbar-heading text-muted">Support</h6>
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-3">
+
+          <li class="nav-item">
+              <a class="nav-link  active " href="/about-help/">
+                <i class="fas fa-question-circle"></i> About & Help
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link "  href="/api-reference/">
+              <i class="fas fa-book"></i> API Reference
+            </a>
+            <div class="collapse " id="navbar-api" style="">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link " href="/api-reference/v1/">Version 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="/api-reference/v2/">Version 2</a>
+                  </li>
+                </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/DonneyF/ubc-grades">
+              <i class="fas fa-code"></i> Source Code
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="main-content">
+  <!-- Header -->
+  <div class="header bg-gradient-primary pb-5 pt-5">
+    <div class="container">
+      
+<h1 class="text-center text-white" style="font-size: 3.5rem;">About &amp; Help</h1>
+
+    </div>
+  </div>
+  
+  <div class="container mt-4 mt-xl-6 pb-6">
+    <p class="has-line-data" data-line-start="2" data-line-end="3"><a href="http://UBCGrades.com">UBCGrades.com</a> is a
+      simple website for you to view and visualize historic grade distribution of courses at the University of British
+      Columbia Vancouver and Okanagan. <a href="http://UBCGrades.com">UBCGrades.com</a> is no way affiliated with the
+      University of British Columbia.</p>
+    <p class="has-line-data" data-line-start="4" data-line-end="5">The purpose of this website is to simply display
+      grade
+      reports in a more useable manner than what is officially provided by UBC as well as to report older grade data
+      that
+      has been removed from public access.</p>
+    <h2 class="code-line" data-line-start=6 data-line-end=7><a id="Data_Source_6"></a>Data Source</h2>
+    <p class="has-line-data" data-line-start="8" data-line-end="9">The source of data for this website is from <a
+            href="https://github.com/DonneyF/ubc-pair-grade-data">ubc-pair-grade-data</a>.</p>
+    <blockquote>
+      <p class="has-line-data" data-line-start="10" data-line-end="11">There are two main sources for the data. The
+        first
+        (now deprecated) source was from the old PAIR Reports dashboard located <a
+                href="https://webprd01.pair.ubc.ca/reports/welcome.action">here</a>. This tool was removed in the summer
+        of
+        2019 in favor of a Tableau dashboard found <a
+                href="http://pair.ubc.ca/student-performance/grades-distribution/">here</a>
+        (the UBC VPN is needed to access), serving as the second source.</p>
+    </blockquote>
+    <p class="has-line-data" data-line-start="12" data-line-end="13"><strong>Q: How are statistics computed?</strong>
+    </p>
+    <p class="has-line-data" data-line-start="14" data-line-end="15">A: See the scripts in the source code.</p>
+    <p class="has-line-data" data-line-start="16" data-line-end="17"><strong>Q: How updated is this website</strong>:
+    </p>
+    <p class="has-line-data" data-line-start="18" data-line-end="19">A: Grade data changes all the time, due to various
+      reasons like deferred exams, appeals, etc. This website is as up to date as the latest commits of the grade data
+      repo
+      mentioned above.</p>
+    <h2 class="code-line" data-line-start=20 data-line-end=21><a id="View_Grades_20"></a>View Grades</h2>
+    <p class="has-line-data" data-line-start="22" data-line-end="23">This page allows you to retrieve single-section
+      grade
+      reports.</p>
+    <p class="has-line-data" data-line-start="24" data-line-end="25"><strong>Q: Why are some grade entries
+      missing?</strong>
+    </p>
+    <p class="has-line-data" data-line-start="26" data-line-end="27">A: For section grades 2014S and later, the page
+      loads
+      data from the Tableau dashboard. The dashboard does not report grades for grade categories with entries of 6 or
+      less
+      for privacy reasons.</p>
+    <p class="has-line-data" data-line-start="28" data-line-end="29"><strong>Q: So then why do I see some grade entries
+      with
+      6 or less?</strong>:</p>
+    <p class="has-line-data" data-line-start="30" data-line-end="31">A: Where possible, it is possible to extrapolate
+      the
+      value of the missing grade entry (for example, if every grade category was populated and only one was missing, we
+      simply subtract the sum from the number of enrolled students).</p>
+    <h2 class="code-line" data-line-start=32 data-line-end=33><a id="Statistics_by_Course_32"></a>Statistics by Course
+    </h2>
+    <p class="has-line-data" data-line-start="34" data-line-end="35">This page allows you to retrieve basic course
+      statistics.</p>
+    <p class="has-line-data" data-line-start="36" data-line-end="37"><strong>Q: Why can’t why is there no
+      pass-percentage?</strong></p>
+    <p class="has-line-data" data-line-start="38" data-line-end="39">A: It is not possible to compute the pass
+      percentage
+      from sections from the Tableau dashboard as it does not report the number of students who failed for all
+      sections.</p>
+    <p class="has-line-data" data-line-start="40" data-line-end="41"><strong>Q: What is “Teaching Team”?</strong>:</p>
+    <p class="has-line-data" data-line-start="42" data-line-end="43">A: This is the names of all personnel credited with
+      the
+      delivery of the course. You will see TA and other facilitators if the Tableau Dashboard has reported them. For
+      courses
+      delivered earlier than 2014S, only the professor(s) were reported.</p>
+    <h2 class="code-line" data-line-start=44 data-line-end=45><a id="Other_44"></a>Other</h2>
+    <p class="has-line-data" data-line-start="46" data-line-end="47"><strong>Q: Why did you make this website?</strong>
+    </p>
+    <p class="has-line-data" data-line-start="48" data-line-end="49">A: Back in 2018W when the Pair Reports website was
+      still up, I was interested in questions like “what is the average grade of a first-year student?” or “Does MATH
+      grade
+      harshly more than other subjects?”. While you can’t directly answer these questions from this website, the data is
+      there for you to get some idea of the answer to these questions. Retrieving all the data from the Pair Reports
+      website
+      was also a fun challenge.</p>
+    <p class="has-line-data" data-line-start="50" data-line-end="51"><strong>Q: How can I use the data already computed
+      in
+      my application?</strong></p>
+    <p class="has-line-data" data-line-start="52" data-line-end="53">A: You can use the API for this website, which does
+      not
+      require a key.</p>
+
+    <!-- Footer -->
+  <footer class="col position-absolute bottom-0 left-0 pt-4 pb-4">
+    <div class="text-center mt-4 copyright">
+      <ul class="nav nav-footer justify-content-center">
+        <li class="nav-item">
+          Made with <span style="color: #e25555;">♥</span> by <a href="https://donneyfan.com">Donney
+          Fan</a> &nbsp;|&nbsp; KVM VPS by <a href="https://evolution-host.com/vps-hosting.php">Evolution Host</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+<!-- Campus Selector Modal -->
+<div class="modal fade" id="campusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Choose a campus</h1>
+      </div>
+      <div class="modal-body text-center">
+        <button type="button" class="btn btn-default" data-dismiss="modal" data-campus="UBCV">UBC Vancouver</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-campus="UBCO">UBC Okanagan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="notification" aria-live="polite" aria-atomic="true"></div>
+
+  </div>
+
+
+
+</div>
+
+
+  
+  <!-- Core -->
+  <script src="/static/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="/static/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+        $(".list-group-item").css('padding', '0.5em 1em 0.5em 1em');
+  </script>
+
+  <!-- Optional JS -->
+  <script src="/static/assets/js/plugins/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
+  <script src="/static/assets/vendor/select2/dist/js/select2.min.js"></script>
+  <script src="/static/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/static/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Argon JS -->
+  <script src="/static/assets/js/argon-dashboard.js"></script>
+  <script src="/static/assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>

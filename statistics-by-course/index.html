@@ -1,0 +1,389 @@
+<!--
+
+=========================================================
+* Argon Dashboard - v1.1.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+
+    
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta property="og:title" content="UBCGrades - Historical Grade Data" />
+      <meta property="og:type" content="website" />
+      <meta name="description" content="A tool to look up UBC historical grade distributions. Visualize some data and make important choices.">    
+
+    <title>
+       Statistics by Course  | UBCGrades
+    </title>
+
+    
+  
+      <!-- Favicon -->
+      <link rel="shortcut icon" type="image/x-icon" href="/static/assets/img/brand/favicon.ico">
+      <link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/brand/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/img/brand/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/img/brand/favicon-16x16.png">
+      <link rel="mask-icon" href="/static/assets/img/brand/safari-pinned-tab.svg" color="#5bbad5">
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+      <!-- Icons -->
+      <link href="/static/assets/js/plugins/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <!-- CSS Files -->
+      <link href="/static/assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" >
+      <link href="/static/assets/css/argon-dashboard.css" rel="stylesheet">
+      <link href="/static/assets/css/app.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    
+
+
+  
+</head>
+
+<body class="">
+
+
+  <!-- Sidenav -->
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+        <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand pb-0" href="/">
+        <h1 class="text-primary" style="font-size: 1.75rem">UBCGrades</h1>
+      </a>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="/">
+                <h1 class="text-primary" style="font-size: 1.75rem">UBCGrades</h1>
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation -->
+        
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="/">
+              <i class="far fa-chart-bar text-primary"></i>View Grades
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link  active " href="/statistics-by-course/">
+              <i class="fas fa-user-graduate text-blue"></i>Statistics by Course
+            </a>
+          </li>
+
+
+
+
+
+
+
+
+
+
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+        <h6 class="navbar-heading text-muted">Support</h6>
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-3">
+
+          <li class="nav-item">
+              <a class="nav-link " href="/about-help/">
+                <i class="fas fa-question-circle"></i> About & Help
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link "  href="/api-reference/">
+              <i class="fas fa-book"></i> API Reference
+            </a>
+            <div class="collapse " id="navbar-api" style="">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link " href="/api-reference/v1/">Version 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="/api-reference/v2/">Version 2</a>
+                  </li>
+                </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/DonneyF/ubc-grades">
+              <i class="fas fa-code"></i> Source Code
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="main-content">
+  <!-- Header -->
+  <div class="header bg-gradient-primary pb-5 pt-5">
+    <div class="container">
+      
+  <div class="card mb-2 mt-4">
+    <!-- Card header -->
+    <div class="card-header">
+      <div class="row">
+        <h1 class="mb-0 col">Statistics by Course</h1>
+        <ul class="nav nav-pills d-none d-sm-flex" id="pills-tab" role="tablist">
+          <li class="nav-item mr-2 mr-md-0">
+            <a class="nav-link py-2 px-3 active" data-toggle="pill" href="#sc-dropdown-form" role="tab"
+               aria-controls="pills-form" aria-selected="true">Dropdowns</a>
+          </li>
+          <li class="nav-item mr-2 mr-md-0">
+            <a class="nav-link py-2 px-3" data-toggle="pill" href="#sc-id-form" role="tab"
+               aria-controls="pills-id" aria-selected="false">Submit by ID</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Card body -->
+    <div class="card-body">
+      <!-- Form groups used in grid -->
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="sc-dropdown-form" role="tabpanel" aria-labelledby="sc-form-tab">
+          <form class="row">
+            <div class="col-lg col-sm-6">
+              <select id="sc-drop-subject" data-toggle="select" data-placeholder="Subject"
+                      class="mb-sm-2 form-control col"
+                      required>
+              </select>
+            </div>
+            <div class="col-lg col-sm-6">
+              <select id="sc-drop-course" data-toggle="select" data-placeholder="Course"
+                      class="mb-sm-2 form-control col"
+                      required>
+              </select>
+            </div>
+            <div class="col-lg-2 col-sm-6 mt-2 mt-lg-0 text-center">
+              <button id="sc-dropdown-submit" class="submit-margin btn btn-block btn-xl btn-primary" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane fade" id="sc-id-form" role="tabpanel" aria-labelledby="sc-id-tab">
+          <form class="row">
+            <div class="col-lg col-6">
+              <input type="text" class="form-control" placeholder="Ex: BIOL 112">
+            </div>
+            <div class="col-lg-2 col-6 text-center">
+              <button id="sc-id-submit" class="submit-margin btn btn-xl btn-primary" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+  
+
+  <div class="container mt--4 pb-6">
+    <div class="collapse" id="content-container">
+      <div class="row mb-4" id="sc-row">
+        <div class="col">
+          <div class="card shadow">
+            <div class="card-header bg-gradient-lighter">
+              <div class="row text-center">
+                <div class="col">
+                  <h3 class="mb-0 text-muted">UBCV MATH 101</h3>
+                  <h2 class="mb-0">INT CALC AP PH S</h2>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Course Information -->
+              <div class="row" id="sc-headmatter">
+                <div class="col">
+                  <h5 class="text-uppercase text-muted ls-1 mb-1">Average (All Years)</h5>
+                  <h2 class="mb-0">60.12</h2>
+                </div>
+                <div class="col">
+                  <h5 class="text-uppercase text-muted ls-1 mb-1">Average (Past 5 years)</h5>
+                  <h2 class="mb-0">60.12</h2>
+                </div>
+                <div class="col">
+                  <h5 class="text-uppercase text-muted ls-1 mb-1">Max Section Average</h5>
+                  <h2 class="mb-0">60.12</h2>
+                </div>
+                <div class="col">
+                  <h5 class="text-uppercase text-muted ls-1 mb-1">Min Section Average</h5>
+                  <h2 class="mb-0">60.12</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <div class="card bg-gradient-default shadow">
+            <div class="card-header bg-transparent">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h2 class="text-white mb-0">Historical Averages</h2>
+                </div>
+                <div class="col">
+                  <ul class="nav nav-pills justify-content-end">
+                    <li id='five-years-toggle' class="nav-item mr-2 mr-md-0" data-toggle="chart"
+                        data-target="#chart-course-avg-hist">
+                      <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                        <span class="d-none d-md-block">Past 5 Years</span>
+                      </a>
+                    </li>
+                    <li id='all-years-toggle' class="nav-item" data-toggle="chart" data-target="#chart-course-avg-hist">
+                      <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                        <span class="d-none d-md-block">All Years</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <!-- Chart -->
+              <div class="chart">
+                <!-- Chart wrapper -->
+                <canvas id="chart-course-avg-hist" class="chart-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <div class="card shadow" id="teaching-team">
+            <div class="card-header border-0">
+              <h2 class="mb-0">MATH 101 Teaching Team</h2>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+              </table>
+            </div>
+            <div class="card-footer py-3">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <div class="card shadow" id="sc-copy-url">
+            <div class="card-body" id="sc-copy-url-form">
+              <form class="row">
+                <div class="col-lg col-8">
+                  <input id="sc-copy-url-input" readonly type="text" class="form-control" aria-label="URL" aria-describedby="basic-addon1">
+                </div>
+                <div class="col-lg-2 col-4 text-center">
+                  <button id="sc-copy-url-submit" class="submit-margin btn btn-block btn-xl btn-primary" type="submit">
+                    Copy
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Footer -->
+  <footer class="col position-absolute bottom-0 left-0 pt-4 pb-4">
+    <div class="text-center mt-4 copyright">
+      <ul class="nav nav-footer justify-content-center">
+        <li class="nav-item">
+          Made with <span style="color: #e25555;">♥</span> by <a href="https://donneyfan.com">Donney
+          Fan</a> &nbsp;|&nbsp; KVM VPS by <a href="https://evolution-host.com/vps-hosting.php">Evolution Host</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+<!-- Campus Selector Modal -->
+<div class="modal fade" id="campusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Choose a campus</h1>
+      </div>
+      <div class="modal-body text-center">
+        <button type="button" class="btn btn-default" data-dismiss="modal" data-campus="UBCV">UBC Vancouver</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-campus="UBCO">UBC Okanagan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="notification" aria-live="polite" aria-atomic="true"></div>
+
+  </div>
+
+
+
+</div>
+
+
+  
+  <!-- Core -->
+  <script src="/static/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="/static/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+        $(".list-group-item").css('padding', '0.5em 1em 0.5em 1em');
+  </script>
+
+  <!-- Optional JS -->
+  <script src="/static/assets/js/plugins/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
+  <script src="/static/assets/vendor/select2/dist/js/select2.min.js"></script>
+  <script src="/static/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/static/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Argon JS -->
+  <script src="/static/assets/js/argon-dashboard.js"></script>
+  <script src="/static/assets/js/main.js"></script>
+
+  <script src="/static/assets/js/statistics-by-course.js"></script>
+
+
+</body>
+
+</html>

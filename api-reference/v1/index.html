@@ -1,0 +1,320 @@
+<!--
+
+=========================================================
+* Argon Dashboard - v1.1.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+
+    
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta property="og:title" content="UBCGrades - Historical Grade Data" />
+      <meta property="og:type" content="website" />
+      <meta name="description" content="A tool to look up UBC historical grade distributions. Visualize some data and make important choices.">    
+
+    <title>
+      API Version 1 | UBCGrades
+    </title>
+
+    
+  
+      <!-- Favicon -->
+      <link rel="shortcut icon" type="image/x-icon" href="/static/assets/img/brand/favicon.ico">
+      <link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/brand/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/img/brand/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/img/brand/favicon-16x16.png">
+      <link rel="mask-icon" href="/static/assets/img/brand/safari-pinned-tab.svg" color="#5bbad5">
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+      <!-- Icons -->
+      <link href="/static/assets/js/plugins/%40fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <!-- CSS Files -->
+      <link href="/static/assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" >
+      <link href="/static/assets/css/argon-dashboard.css" rel="stylesheet">
+      <link href="/static/assets/css/app.css" rel="stylesheet">
+      <link rel="stylesheet" href="/static/assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    
+
+
+  
+</head>
+
+<body class="">
+
+
+  <!-- Sidenav -->
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+    <div class="container-fluid">
+        <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand pb-0" href="/">
+        <h1 class="text-primary" style="font-size: 1.75rem">UBCGrades</h1>
+      </a>
+      <!-- Collapse -->
+      <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+        <!-- Collapse header -->
+        <div class="navbar-collapse-header d-md-none">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a href="/">
+                <h1 class="text-primary" style="font-size: 1.75rem">UBCGrades</h1>
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation -->
+        
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link " href="/">
+              <i class="far fa-chart-bar text-primary"></i>View Grades
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/statistics-by-course/">
+              <i class="fas fa-user-graduate text-blue"></i>Statistics by Course
+            </a>
+          </li>
+
+
+
+
+
+
+
+
+
+
+        </ul>
+        <!-- Divider -->
+        <hr class="my-3">
+        <!-- Heading -->
+        <h6 class="navbar-heading text-muted">Support</h6>
+        <!-- Navigation -->
+        <ul class="navbar-nav mb-md-3">
+
+          <li class="nav-item">
+              <a class="nav-link " href="/about-help/">
+                <i class="fas fa-question-circle"></i> About & Help
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link "  href="/api-reference/">
+              <i class="fas fa-book"></i> API Reference
+            </a>
+            <div class="collapse  show " id="navbar-api" style="">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link  active " href="/api-reference/v1/">Version 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="/api-reference/v2/">Version 2</a>
+                  </li>
+                </ul>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/DonneyF/ubc-grades">
+              <i class="fas fa-code"></i> Source Code
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="main-content">
+  <!-- Header -->
+  <div class="header bg-gradient-primary pb-5 pt-5">
+    <div class="container">
+      
+  <h1 class="text-center text-white" style="font-size: 3.5rem;">API Version 1</h1>
+
+    </div>
+  </div>
+  
+  <div class="container mt-4 mt-xl-6 pb-6">
+    <div class="row justify-content-center">
+      <div class="col">
+        <h1>Retrieve Grade Distributions</h1>
+        <p>Required URL parameters are <strong>bolded</strong>.</p>
+        <figure>
+          <table class="table table-responsive table-striped table-bordered">
+            <thead>
+            <tr>
+              <th>Endpoint</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                /grades/<strong>campus</strong>/<strong>yearsession</strong>/<strong>subject</strong>/<strong>course</strong>/<strong>section</strong>
+              </td>
+              <td>Retrieves a grade distribution report for a single section</td>
+              <td><a href='/api/v1/grades/UBCV/2018W/MATH/100/101'>/v1/grades/UBCV/2018W/MATH/100/101</a></td>
+            </tr>
+            <tr>
+              <td>
+                /grades/<strong>campus</strong>/<strong>yearsession</strong>/<strong>subject</strong>/<strong>course</strong>
+              </td>
+              <td>Retrieves a grade distribution report for a course</td>
+              <td><a href='/api/v1/grades/UBCV/2018W/MATH/100'>/api/v1/grades/UBCV/2018W/MATH/100</a></td>
+            </tr>
+            <tr>
+              <td>/grades/<strong>campus</strong>/<strong>yearsession</strong>/<strong>subject</strong></td>
+              <td>Retrieves a grade distribution report for a subject</td>
+              <td><a href='/api/v1/grades/UBCV/2018W/POLI'>/api/v1/grades/UBCV/2018W/POLI</a></td>
+            </tr>
+            <tr>
+              <td>/grades/<strong>campus</strong>/<strong>yearsession</strong></td>
+              <td>Retrieves a grade distribution report for a yearsession</td>
+              <td><a href='/api/v1/grades/UBCV/2017S'>/api/v1/grades/UBCV/2017S</a></td>
+            </tr>
+            <tr>
+              <td>
+                /grades/<strong>campus</strong>/<strong>yearsession</strong>/<strong>subject</strong>/<strong>course</strong>/<strong>section</strong>
+              </td>
+              <td>Retrieves a grade distribution report for a single section</td>
+              <td><a href='/api/v1/grades/UBCV/2018W/MATH/100/101'>/api/v1/grades/UBCV/2018W/MATH/100/101</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </figure>
+        <h1>Filters</h1>
+        <p>Required URL parameters are <strong>bolded</strong>.</p>
+        <figure>
+          <table class="table table-responsive table-striped table-bordered">
+            <thead>
+            <tr>
+              <th>Endpoint</th>
+              <th>Description</th>
+              <th>Example</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                /sections/<strong>campus</strong>/<strong>yearsession</strong>/<strong>subject</strong>/<strong>course</strong>
+              </td>
+              <td>Retrieves all the section numbers under a particular course</td>
+              <td><a href='/api/v1/sections/UBCV/2018W/BIOL/200'>/api/v1/sections/UBCV/2018W/BIOL/200</a></td>
+            </tr>
+            <tr>
+              <td>/courses/<strong>campus</strong>/<strong>yearsession</strong>/<strong>subject</strong></td>
+              <td>Retrieves all the course labels under a particular subject and yearsession</td>
+              <td><a href='/api/v1/courses/UBCV/2018W/POLI'>/api/v1/courses/UBCV/2018W/POLI</a></td>
+            </tr>
+            <tr>
+              <td>/courses/<strong>campus</strong>/<strong>subject</strong></td>
+              <td>Retrieves all the distinct course labels under a particular subject</td>
+              <td><a href='/api/v1/courses/UBCV/ELEC'>/api/v1/courses/UBCV/ELEC</a></td>
+            </tr>
+            <tr>
+              <td>/subjects/<strong>campus</strong>/<strong>yearsession</strong></td>
+              <td>Retrieves all distinct subjects under a particular yearsession</td>
+              <td><a href='/api/v1/subjects/UBCV/2016W'>/api/v1/subjects/UBCV/2016W</a></td>
+            </tr>
+            <tr>
+              <td>/subjects/<strong>campus</strong></td>
+              <td>Retrieves all distinct subjects across all yearsessions</td>
+              <td><a href='/api/v1/subjects/UBCV'>/api/v1/subjects/UBCV</a></td>
+            </tr>
+            <tr>
+              <td>/yearsessions/<strong>campus</strong></td>
+              <td>Retrieves all available yearsessions</td>
+              <td><a href='/api/v1/yearsessions/UBCV'>/api/v1/yearsessions/UBCV/</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Footer -->
+  <footer class="col position-absolute bottom-0 left-0 pt-4 pb-4">
+    <div class="text-center mt-4 copyright">
+      <ul class="nav nav-footer justify-content-center">
+        <li class="nav-item">
+          Made with <span style="color: #e25555;">♥</span> by <a href="https://donneyfan.com">Donney
+          Fan</a> &nbsp;|&nbsp; KVM VPS by <a href="https://evolution-host.com/vps-hosting.php">Evolution Host</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+<!-- Campus Selector Modal -->
+<div class="modal fade" id="campusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Choose a campus</h1>
+      </div>
+      <div class="modal-body text-center">
+        <button type="button" class="btn btn-default" data-dismiss="modal" data-campus="UBCV">UBC Vancouver</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-campus="UBCO">UBC Okanagan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="notification" aria-live="polite" aria-atomic="true"></div>
+
+  </div>
+
+
+
+</div>
+
+
+  
+  <!-- Core -->
+  <script src="/static/assets/js/plugins/jquery/dist/jquery.min.js"></script>
+  <script src="/static/assets/js/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+        $(".list-group-item").css('padding', '0.5em 1em 0.5em 1em');
+  </script>
+
+  <!-- Optional JS -->
+  <script src="/static/assets/js/plugins/chart.js/dist/Chart.min.js"></script>
+  <script src="/static/assets/js/plugins/chart.js/dist/Chart.extension.js"></script>
+  <script src="/static/assets/vendor/select2/dist/js/select2.min.js"></script>
+  <script src="/static/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="/static/assets/vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Argon JS -->
+  <script src="/static/assets/js/argon-dashboard.js"></script>
+  <script src="/static/assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>

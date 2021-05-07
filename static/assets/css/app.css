@@ -1,0 +1,43 @@
+.select2-results__options {
+    max-height: 400px !important;
+}
+
+.select2-selection--single:before {
+    content: "";
+    position: absolute;
+    right: 7px;
+    top: 42%;
+    border-top: 5px solid #888;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+.badge {
+    font-size: 100%;
+}
+
+#notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+}
+
+.main-content {
+    min-height: 100vh;
+}
+
+.bigdrop {
+    width: 600px !important;
+}
+
+/* Smaller h1 on small screens */
+@media screen and (max-width: 576px) {
+    h1 {
+        font-size: 1.5em;
+    }
+}
+
+input:read-only, input:read-only:focus {
+    color: black;
+}
