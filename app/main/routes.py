@@ -7,7 +7,7 @@ def index():
     return render_template('index.html')
 
 
-@bp.route('/statistics-by-course', methods=['GET'])
+@bp.route('/statistics-by-course/', methods=['GET'])
 def statistics_by_course():
     return render_template('statistics_by_course.html')
 
@@ -21,21 +21,21 @@ def statistics_by_course():
 # def statistics_by_faculty():
 #     return render_template('statistics_by_faculty.html')
 
-@bp.route('/about-help', methods=['GET'])
+@bp.route('/about-help/', methods=['GET'])
 def about_help():
     return render_template('about_help.html')
 
 
-@bp.route('/api-reference', methods=['GET'])
+@bp.route('/api-reference/', methods=['GET'])
 def api_index():
     return render_template('api/api_index.html')
 
 
-@bp.route('/api-reference/v1', methods=['GET'])
+@bp.route('/api-reference/v1/', methods=['GET'])
 def api_v1():
     return render_template('api/v1.html')
 
 
-@bp.route('/api-reference/v2', methods=['GET'])
+@bp.route('/api-reference/v2/', methods=['GET'])
 def api_v2():
     return render_template('api/v2.html')

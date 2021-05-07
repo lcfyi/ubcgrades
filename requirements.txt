@@ -2,3 +2,4 @@ flask
 flask_sqlalchemy
 nameparser
 flask_migrate
+Frozen-Flask
